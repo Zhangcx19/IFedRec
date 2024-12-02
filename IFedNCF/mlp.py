@@ -86,10 +86,3 @@ class MLPEngine(Engine):
             self.client_model.cuda()
             self.server_model.cuda()
         super(MLPEngine, self).__init__(config)
-
-        # a = self.model.state_dict().keys()
-        # print("item embedding type: ", self.model.state_dict()['embedding_item.weight'].dtype)
-        # for key in a:
-        #     if key != 'embedding_item.weight' and key != 'embedding_user.weight':
-        #         print(key)
-        #         print(self.model.state_dict()[key])
