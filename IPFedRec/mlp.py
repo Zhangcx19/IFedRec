@@ -11,10 +11,6 @@ class Client(torch.nn.Module):
 
         self.embedding_item = torch.nn.Embedding(num_embeddings=self.num_items_train, embedding_dim=self.latent_dim)
 
-        # self.fc_layers = torch.nn.ModuleList()
-        # for idx, (in_size, out_size) in enumerate(zip(config['client_model_layers'][:-1], config['client_model_layers'][1:])):
-        #     self.fc_layers.append(torch.nn.Linear(in_size, out_size))
-
         self.affine_output = torch.nn.Linear(in_features=self.latent_dim, out_features=1)
         self.logistic = torch.nn.Sigmoid()
 
@@ -78,10 +74,3 @@ class MLPEngine(Engine):
             self.client_model.cuda()
             self.server_model.cuda()
         super(MLPEngine, self).__init__(config)
-
-        # a = self.model.state_dict().keys()
-        # print("item embedding type: ", self.model.state_dict()['embedding_item.weight'].dtype)
-        # for key in a:
-        #     if key != 'embedding_item.weight' and key != 'embedding_user.weight':
-        #         print(key)
-        #         print(self.model.state_dict()[key])
