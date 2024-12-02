@@ -131,9 +131,6 @@ class Engine(object):
                 model_client.load_state_dict(user_param_dict)
             # Defining optimizers
             # optimizer is responsible for updating score function.
-            # optimizer = torch.optim.SGD([{"params": model_client.fc_layers.parameters()},
-            #                              {"params": model_client.affine_output.parameters()}],
-            #                             lr=self.config['lr_client'], weight_decay=self.config['l2_regularization'])  # MLP optimizer
             optimizer = torch.optim.SGD(model_client.affine_output.parameters(),
                                         lr=self.config['lr_client'],
                                         weight_decay=self.config['l2_regularization'])  # MLP optimizer
